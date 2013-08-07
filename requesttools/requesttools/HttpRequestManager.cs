@@ -65,7 +65,7 @@ namespace requesttools
         /// </summary>
         /// <param name="urlModel"></param>
         /// <returns></returns>
-        private static string ConvertUrlSimpleModelToGetRequest(RequestModel urlModel, bool urlEncode = false)
+        private static string ConvertUrlSimpleModelToGetRequest(RequestModel urlModel, bool urlEncode = true)
         {
             if (urlModel.Parameters != null && urlModel.Parameters.Count > 0)
                 return urlModel.Url + "?" + ConvertKeyValuePairListToQueryString(urlModel.Parameters, urlEncode);
@@ -96,7 +96,7 @@ namespace requesttools
             return HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + virtualPath;
         }
 
-        public static string GenerateRequest(string url, List<KeyValuePair<string, string>> parameters, bool urlEncode = false)
+        public static string GenerateRequest(string url, List<KeyValuePair<string, string>> parameters, bool urlEncode = true)
         {
             RequestModel urlModel = new RequestModel
             {
